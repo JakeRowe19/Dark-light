@@ -18,22 +18,21 @@ body {
 .menu-grid {
   width: 100vw;
   height: 100vh;
-  padding: 2vh 2vw;
 
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));  /* 5 строго равных колонок */
-  grid-template-rows: repeat(3, minmax(0, 1fr));     /* 3 строго равных строки */
-  column-gap: 1.5vw;
-  row-gap: 1.8vh;
-}
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
 
+  gap: 1.5vh;
+  padding: 2vh;
+}
 /* КАРТОЧКА ВНУТРИ ЯЧЕЙКИ */
 
 .beer-card {
   background: #fff;
   border: 0.6vh solid #000;
   border-radius: 1.4vh;
-  padding: 2vh 1.6vw;
+  padding: 2vh 2vh;
 
   display: flex;
   flex-direction: column;
@@ -65,7 +64,7 @@ body {
 /* ————— элементы ————— */
 
 .title {
-  font-size: 2vw;
+  font-size: 3.6vh;
   text-align: center;
   line-height: 1.06;
 
@@ -92,7 +91,7 @@ body {
 }
 
 .price {
-  font-size: 2vw;
+  font-size: 4vh;
   font-weight: 900;
 }
 
@@ -105,7 +104,7 @@ body {
 /* заголовок */
 
 .title-id {
-  font-size: 1.3vw;
+  font-size: 2.3vh;
   margin-bottom: 0.6vh;
 }
 
@@ -132,17 +131,17 @@ body {
   margin-top: auto;
 }
 .price {
-  font-size: 2vw;
+  font-size: 4vh;
   font-weight: 900;
 }
 
 
 .country {
-  font-size: 1.3vw;
+  font-size: 2.1vh;
 }
 
 .abv {
-  font-size: 1.2vw;
+  font-size: 2.1vh;
 }
 
 
