@@ -60,30 +60,30 @@ function getState(item) {
 // (он уже содержит "1.Ратминское" и т.п.)
 // если он вдруг пустой → подстрахуемся id + "название"
 function formatTitle(item) {
-  const display = sanitize(item["Наименование"]);
-  if (display) return display;
-
-  const id   = sanitize(item["id"]);
-  const name = sanitize(item["название"]);
-  return [id, name].filter(Boolean).join(". ");
+  return item["Наименование"] || "";
 }
+
 
 // Строка "крепость + плотность":
 // берём как есть из столбца R "Плотность°P"
 function formatSpecs(item) {
-  return sanitize(item["Плотность°P"]) || sanitize(item["Плотность °P"]);
+  const abvRaw = Number(item["крепость"]);
+  const ogRaw  = Number(item["плотность"]);
+  
+  const abv = abvRaw ? (abvRaw / 10).toFixed(1) + "%" : "";
+  const og  = ogRaw ? ogRaw + "°P" : "";
+
+  return [abv, og].filter(Boolean).join(" ");
 }
+
 
 // Цена
 function formatPrice(item) {
-  let p = sanitize(item["Цена₽"]) || sanitize(item["цена"]);
+  const p = item["цена"] || item["Цена"] || "";
   if (!p) return "";
-
-  if (!/₽/.test(p)) {
-    p = p + "₽";
-  }
-  return p;
+  return p + "₽";
 }
+
 
 // Страна
 function getCountry(item) {
