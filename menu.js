@@ -39,6 +39,10 @@ function stripQuotes(str) {
 }
 
 // ---------- маппинг полей ----------
+function formatSpecs(item) {
+  // берём уже готовую строку из столбца "Плотность°P"
+  return item["Плотность°P"] || item["Плотность °P"] || "";
+}
 
 function getState(item) {
   const v = (item["instock"] || "").toLowerCase();
@@ -105,13 +109,10 @@ function getBadge(item) {
 function cardTemplate(item) {
   const state   = getState(item);
   const title   = formatTitle(item);
-  const abv     = formatAbv(item);
-  const og      = formatOg(item);
+  const specs   = formatSpecs(item);
   const price   = formatPrice(item);
   const country = getCountry(item);
   const badge   = getBadge(item);
-
-  const specs = [abv, og].filter(Boolean).join(" ");
 
   return `
     <div class="beer-card state-${state}">
@@ -131,6 +132,7 @@ function cardTemplate(item) {
     </div>
   `;
 }
+
 
 // ---------- рендер экрана ----------
 
