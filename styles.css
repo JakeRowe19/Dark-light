@@ -1,4 +1,17 @@
 /* === БАЗА ПОД 4K ЭКРАН 3×5 === */
+@font-face {
+  font-family: "TTravels";
+  src: url("./fonts/TTravels-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TTravels";
+  src: url("./fonts/TTravels-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
 
 html, body {
   margin: 0;
@@ -8,10 +21,9 @@ html, body {
 }
 
 body {
-  background: #2a1a0a;
-  font-family: "Impact", system-ui, sans-serif;
-  color: #000;
+  font-family: "TTravels", sans-serif;
 }
+
 
 /* сетка 5 по ширине, 3 по высоте, строго в окно */
 
