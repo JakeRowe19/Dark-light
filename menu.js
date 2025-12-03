@@ -49,9 +49,8 @@ function getState(item) {
 }
 
 function formatTitle(item) {
-  const id   = item["id"] || "";
-  const name = item["название"] || item["Наименование"] || "";
-  return `${id}. ${name}`.trim();
+  const name = item["Наименование"] || item["название"] || item["Name"];
+  return name.trim();
 }
 
 function formatAbv(item) {
