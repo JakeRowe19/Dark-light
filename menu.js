@@ -121,7 +121,6 @@ function cardTemplate(item) {
 
   return `
     <div class="beer-card state-${state}">
-      
       <div class="card-top">
         <div class="title-id">${id}</div>
         <div class="title">${name}</div>
@@ -140,7 +139,6 @@ function cardTemplate(item) {
           <span class="price">${price}</span>
         </div>
       </div>
-
     </div>
   `;
 }
