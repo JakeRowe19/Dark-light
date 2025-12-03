@@ -111,19 +111,25 @@ function cardTemplate(item) {
 
   return `
     <div class="beer-card state-${state}">
-      <div class="title">${title}</div>
+
+      <div class="card-top">
+        <div class="title">${title}</div>
+      </div>
 
       <div class="divider"></div>
 
-      <div class="info-line">
-        <span class="country">${country}</span>
-        ${badge ? `<span class="badge-wrap">${badge}</span>` : ""}
+      <div class="card-bottom">
+        <div class="info-line">
+          <span class="country">${country}</span>
+          ${badge ? `<span class="badge-wrap">${badge}</span>` : ""}
+        </div>
+
+        <div class="info-line">
+          <span class="abv">${specs}</span>
+          <span class="price">${price}</span>
+        </div>
       </div>
 
-      <div class="info-line">
-        <span class="abv">${specs}</span>
-        <span class="price">${price}</span>
-      </div>
     </div>
   `;
 }
