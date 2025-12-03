@@ -16,35 +16,33 @@ body {
 /* сетка 5 по ширине, 3 по высоте, строго в окно */
 
 .menu-grid {
+  box-sizing: border-box;
   width: 100vw;
   height: 100vh;
-
+  padding: 2vh 2vw;              /* поля от краёв экрана */
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, minmax(0, 1fr));
-
-  gap: 1.5vh;
-  padding: 2vh;
+  gap: 1.8vh 1.5vw;
 }
-/* КАРТОЧКА ВНУТРИ ЯЧЕЙКИ */
+
+/* карточка = ровно размер ячейки */
 
 .beer-card {
-  background: #fff;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
   border: 0.6vh solid #000;
   border-radius: 1.4vh;
-  padding: 2vh 2vh;
+  padding: 2vh 1.6vw;
 
   display: flex;
   flex-direction: column;
-
-  width: 100%;
-  height: 100%;
-  margin: 0;                 /* ВАЖНО: никаких внешних отступов */
 }
 
-
 .card-top {
-  flex: 1;                     /* верхняя половина */
+  flex: 1; /* верхняя половина */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,9 +50,8 @@ body {
   text-align: center;
 }
 
-
 .card-bottom {
-  flex: 1;                      /* нижняя половина */
+  flex: 1; /* нижняя половина */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -64,16 +61,12 @@ body {
 /* ————— элементы ————— */
 
 .title {
-  font-size: 3.6vh;
+  font-size: 2.3vw;
+  line-height: 1.05;
+  white-space: normal;
+  overflow-wrap: break-word;
   text-align: center;
-  line-height: 1.06;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 2;        /* максимум 2 строки */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
-
 
 .divider {
   height: 0.4vh;
@@ -91,7 +84,7 @@ body {
 }
 
 .price {
-  font-size: 4vh;
+  font-size: 2vw;
   font-weight: 900;
 }
 
@@ -104,8 +97,8 @@ body {
 /* заголовок */
 
 .title-id {
-  font-size: 2.3vh;
-  margin-bottom: 0.6vh;
+  font-size: 1.4vw;
+  margin-bottom: 0.4vh;
 }
 
 .title {
@@ -118,32 +111,35 @@ body {
 
 
 .divider {
-  width: 100%;
   height: 0.35vh;
   background: #000;
+  margin: 0.8vh 0 1.2vh;
   flex-shrink: 0;
 }
 
 
 /* строки с инфой */
 
-.info-line:last-child {
+.info-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2vw;
   margin-top: auto;
 }
-.price {
-  font-size: 4vh;
-  font-weight: 900;
-}
-
 
 .country {
-  font-size: 2.1vh;
+  font-size: 1.3vw;
 }
 
 .abv {
-  font-size: 2.1vh;
+  font-size: 1.2vw;
 }
 
+.price {
+  font-size: 2.2vw;
+  font-weight: 900;
+}
 
 /* бейдж */
 
