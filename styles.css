@@ -1,0 +1,126 @@
+/* общие настройки под 4K */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #2a1a0a; /* твой коричневый фон */
+  font-family: "Impact", system-ui, sans-serif;
+  color: #000;
+  overflow: hidden;
+}
+
+/* сетка 3x5 */
+.menu-grid {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* карточка */
+
+.beer-card {
+  background: #ffffff;
+  border: 8px solid #000;
+  border-radius: 18px;
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* заголовок */
+
+.title {
+  font-size: 64px;
+  text-align: center;
+  line-height: 1.05;
+}
+
+/* линия */
+
+.divider {
+  height: 4px;
+  background: #000;
+  margin: 18px 0;
+}
+
+/* строки с инфой */
+
+.info-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 32px;
+  margin-top: 8px;
+}
+
+.country {
+  font-size: 34px;
+}
+
+.abv {
+  font-size: 32px;
+}
+
+.price {
+  font-size: 60px;
+  font-weight: 900;
+}
+
+/* бейдж */
+
+.badge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.badge {
+  height: 52px;
+}
+
+/* ===== состояния ===== */
+
+/* 1. в наличии */
+.state-instock .price {
+  color: #000;
+}
+
+/* 2. в пути (instock=no) */
+
+.state-pending {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.state-pending .divider,
+.state-pending .country,
+.state-pending .badge-wrap,
+.state-pending .abv,
+.state-pending .price {
+  display: none;
+}
+
+.state-pending::after {
+  content: "В пути";
+  font-size: 72px;
+  font-weight: 900;
+  text-align: center;
+  width: 100%;
+}
+
+/* 3. скидка (instock=sale) */
+
+.state-sale .price {
+  color: #e00000;
+}
