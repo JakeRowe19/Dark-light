@@ -21,7 +21,9 @@ html, body {
 }
 
 body {
+  background: #2a1a0a;
   font-family: "TTravels", sans-serif;
+  color: #000;
 }
 
 
