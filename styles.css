@@ -120,7 +120,7 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
 /* заголовок */
 
 .title-id {
-  font-size: 1.4vw;
+  font-size: 2vw;
   margin-bottom: 0.4vh;
   font-family: "TTTravels";
   font-weight: 700;
