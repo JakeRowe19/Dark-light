@@ -127,7 +127,7 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 
 .title {
-  font-size: 2.1vw;
+  font-size: 2vw;
   font-family: "TTTravels";
   font-weight: 700;
   line-height: 1.05;
