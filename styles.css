@@ -49,7 +49,7 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
   align-items: center;
   text-align: center;
 
-  padding: 0 3vh;       /* ← горизонтальные отступы внутри верхней половины */
+  padding: 0 1vh;       /* ← горизонтальные отступы внутри верхней половины */
   box-sizing: border-box;
 }
 
