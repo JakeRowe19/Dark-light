@@ -49,8 +49,9 @@ function getState(item) {
 }
 
 function formatTitle(item) {
-  // Используем исходный столбец "название"
-  return item["название"] || item["Наименование"] || "";
+  const id   = item["id"] || "";
+  const name = item["название"] || item["Наименование"] || "";
+  return `${id}. ${name}`.trim();
 }
 
 function formatAbv(item) {
@@ -61,13 +62,12 @@ function formatAbv(item) {
 }
 
 function formatOg(item) {
-  const og =
-    item["ПЛОТНОСТЬ"] ||
-    item["Плотность"] ||
-    item["Плотность°P"];
+  // Берём только базовый столбец "ПЛОТНОСТЬ" (12, 13, 14...)
+  const og = item["ПЛОТНОСТЬ"] || item["Плотность"];
   if (!og) return "";
   return og + "°P";
 }
+
 
 function formatPrice(item) {
   // Берём исходную "цена"

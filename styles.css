@@ -1,4 +1,5 @@
-/* общие настройки под 4K */
+/* === БАЗА ПОД 4K ЭКРАН 3×5 === */
+
 html, body {
   margin: 0;
   padding: 0;
@@ -7,50 +8,56 @@ html, body {
 }
 
 body {
-  background: #2a1a0a; /* твой коричневый фон */
+  background: #2a1a0a;
   font-family: "Impact", system-ui, sans-serif;
   color: #000;
-  overflow: hidden;
 }
 
-/* сетка 3x5 */
+/* сетка 5 по ширине, 3 по высоте, строго в окно */
+
 .menu-grid {
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  padding: 40px;
+  width: 100vw;
+  height: 100vh;
+  padding: 2vh 2vw;              /* поля от краёв экрана */
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 1.8vh 1.5vw;
 }
 
-/* карточка */
+/* карточка = ровно размер ячейки */
 
 .beer-card {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
   background: #ffffff;
-  border: 8px solid #000;
-  border-radius: 18px;
-  padding: 34px;
+  border: 0.6vh solid #000;
+  border-radius: 1.4vh;
+  padding: 2vh 1.6vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;        /* <-- важно, чтобы ничего не вылезало */
 }
 
 /* заголовок */
 
 .title {
-  font-size: 64px;
+  font-size: 2.3vw;
   text-align: center;
   line-height: 1.05;
+  white-space: normal;           /* разрешаем переносы */
+  overflow-wrap: break-word;     /* переносим длинные слова */
 }
 
 /* линия */
 
 .divider {
-  height: 4px;
+  height: 0.3vh;
   background: #000;
-  margin: 18px 0;
+  margin: 1.2vh 0;
 }
 
 /* строки с инфой */
@@ -59,20 +66,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 32px;
-  margin-top: 8px;
+  font-size: 1.2vw;
+  margin-top: 0.8vh;
 }
 
 .country {
-  font-size: 34px;
+  font-size: 1.3vw;
 }
 
 .abv {
-  font-size: 32px;
+  font-size: 1.2vw;
 }
 
 .price {
-  font-size: 60px;
+  font-size: 2.2vw;
   font-weight: 900;
 }
 
@@ -85,17 +92,16 @@ body {
 }
 
 .badge {
-  height: 52px;
+  height: 3.2vh;
 }
 
 /* ===== состояния ===== */
 
-/* 1. в наличии */
 .state-instock .price {
   color: #000;
 }
 
-/* 2. в пути (instock=no) */
+/* В пути */
 
 .state-pending {
   display: flex;
@@ -113,13 +119,13 @@ body {
 
 .state-pending::after {
   content: "В пути";
-  font-size: 72px;
+  font-size: 2.4vw;
   font-weight: 900;
   text-align: center;
   width: 100%;
 }
 
-/* 3. скидка (instock=sale) */
+/* Скидка */
 
 .state-sale .price {
   color: #e00000;
