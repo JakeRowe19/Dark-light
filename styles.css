@@ -38,27 +38,29 @@ body {
   padding: 2vh 1.6vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;        /* <-- важно, чтобы ничего не вылезало */
+  justify-content: flex-start;   /* было space-between */
+  overflow: hidden;
 }
+
 
 /* заголовок */
 
 .title {
-  font-size: 2.3vw;
+  font-size: 2.2vw;          /* можно чуть меньше, чем было */
   text-align: center;
   line-height: 1.05;
-  white-space: normal;           /* разрешаем переносы */
-  overflow-wrap: break-word;     /* переносим длинные слова */
+  white-space: normal;
+  overflow-wrap: break-word;
+  margin-bottom: 0.8vh;      /* небольшой отступ от линии */
 }
-
-/* линия */
 
 .divider {
-  height: 0.3vh;
+  height: 0.35vh;
   background: #000;
-  margin: 1.2vh 0;
+  margin: 0.8vh 0 1.2vh;
+  flex-shrink: 0;
 }
+
 
 /* строки с инфой */
 
@@ -67,7 +69,7 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 1.2vw;
-  margin-top: 0.8vh;
+  margin-top: auto;
 }
 
 .country {
