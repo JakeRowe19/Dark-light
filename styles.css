@@ -122,10 +122,14 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
 .title-id {
   font-size: 1.4vw;
   margin-bottom: 0.4vh;
+  font-family: "TTravels";
+  font-weight: 700;
 }
 
 .title {
   font-size: 2.1vw;
+  font-family: "TTravels";
+  font-weight: 700;
   line-height: 1.05;
   white-space: normal;
   overflow-wrap: break-word;
