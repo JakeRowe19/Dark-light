@@ -42,13 +42,17 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 
 .card-top {
-  flex: 1; /* верхняя половина */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  padding: 0 3vh;       /* ← горизонтальные отступы внутри верхней половины */
+  box-sizing: border-box;
 }
+
 
 .card-bottom {
   flex: 1; /* нижняя половина */
@@ -61,12 +65,17 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
 /* ————— элементы ————— */
 
 .title {
-  font-size: 2.3vw;
+  font-size: 3.6vh;
   line-height: 1.05;
-  white-space: normal;
-  overflow-wrap: break-word;
   text-align: center;
+
+  white-space: normal;
+  overflow-wrap: break-word; /* разрешаем переносить длинные слова */
+  word-break: break-word;
+
+  max-width: 100%;
 }
+
 
 .divider {
   height: 0.4vh;
