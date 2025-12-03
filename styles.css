@@ -21,8 +21,8 @@ body {
   height: 100vh;
   padding: 2vh 2vw;              /* поля от краёв экрана */
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 1.8vh 1.5vw;
 }
 
