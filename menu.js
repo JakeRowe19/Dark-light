@@ -90,6 +90,15 @@ function getCountry(item) {
   return sanitize(item["Страна"]);
 }
 
+function getId(item) {
+  return item["id"] || "";
+}
+
+function getName(item) {
+  return item["название"] || "";
+}
+
+
 // Бейдж
 function getBadge(item) {
   const bt = sanitize(item["beertype"]);
@@ -103,7 +112,8 @@ function getBadge(item) {
 
 function cardTemplate(item) {
   const state   = getState(item);
-  const title   = formatTitle(item);
+  const id      = getId(item);
+  const name    = getName(item);
   const specs   = formatSpecs(item);
   const price   = formatPrice(item);
   const country = getCountry(item);
@@ -111,9 +121,9 @@ function cardTemplate(item) {
 
   return `
     <div class="beer-card state-${state}">
-
       <div class="card-top">
-        <div class="title">${title}</div>
+        <div class="title-id">${id}</div>
+        <div class="title">${name}</div>
       </div>
 
       <div class="divider"></div>
@@ -129,10 +139,10 @@ function cardTemplate(item) {
           <span class="price">${price}</span>
         </div>
       </div>
-
     </div>
   `;
 }
+
 
 // ----- РЕНДЕР ЭКРАНА -----
 
