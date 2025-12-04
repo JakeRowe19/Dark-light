@@ -13,7 +13,6 @@ const BEERTYPE_BADGE = {
   "beertype=other":   "beertype=other.png",
   "beertype=n/a":     "nonalc.png"
 };
-
 // ----- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ -----
 
 function stripQuotes(str) {
@@ -79,7 +78,7 @@ function formatSpecs(item) {
 
 // Цена
 function formatPrice(item) {
-  const p = item["цена"] || item["Цена"] || "";
+  const p = item["Цена₽"] || item["Цена"] || "";
   if (!p) return "";
   return p + "₽";
 }
@@ -111,13 +110,15 @@ function getBadge(item) {
 // ----- ШАБЛОН КАРТОЧКИ -----
 
 function cardTemplate(item) {
-  const state   = getState(item);
+  const state   = getState(item);        // instock / sale / pending ...
   const id      = getId(item);
   const name    = getName(item);
-  const specs   = formatSpecs(item);
-  const price   = formatPrice(item);
+  const specs   = formatSpecs(item);     // "4.2% 12°P"
+  const price   = formatPrice(item);     // "120₽"
   const country = getCountry(item);
-  const badge   = getBadge(item);
+  const badge   = getBadge(item);        // <img ...> или ""
+
+  const isPending = state === "pending";
 
   return `
     <div class="beer-card state-${state}">
@@ -126,22 +127,31 @@ function cardTemplate(item) {
         <div class="title">${name}</div>
       </div>
 
-      <div class="divider"></div>
-
       <div class="card-bottom">
-        <div class="info-line">
-          <span class="country">${country}</span>
-          ${badge ? `<span class="badge-wrap">${badge}</span>` : ""}
-        </div>
+        <div class="divider"></div>
 
-        <div class="info-line">
-          <span class="abv">${specs}</span>
-          <span class="price">${price}</span>
-        </div>
+        ${
+          isPending
+            ? `
+              <div class="pending-text">В пути</div>
+            `
+            : `
+              <div class="info-line">
+                <span class="country">${country}</span>
+                ${badge ? `<span class="badge-wrap">${badge}</span>` : ""}
+              </div>
+              <div class="info-line">
+                <span class="abv">${specs}</span>
+                <span class="price">${price}</span>
+              </div>
+            `
+        }
       </div>
     </div>
   `;
 }
+
+
 
 
 // ----- РЕНДЕР ЭКРАНА -----
