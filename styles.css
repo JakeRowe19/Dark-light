@@ -58,12 +58,13 @@ body {
 .card-top {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;   /* ← было flex-end / center */
   align-items: center;
   text-align: center;
-  padding: 1vh 2vh 1vh;            /* небольшой верхний отступ, снизу 0 */
-  box-sizing: border-box;
+
+  padding-top: 3vh;     /* фиксированный отступ сверху */
+  padding-bottom: 0;     /* нижний нам не нужен — divider живёт внизу */
 }
+
 
 
 
@@ -80,17 +81,16 @@ body {
   font-size: 3.6vh;
   line-height: 1.05;
   text-align: center;
-  white-space: normal;
-  overflow-wrap: break-word;
-  word-break: normal;
+
   max-width: 100%;
-  margin-bottom: 1vh;          /* ≈ 30px: название → divider */
-  overflow-wrap: anywhere;
+  margin-bottom: 3vh;     /* расстояние от названия → divider */
+
   display: -webkit-box;
-  -webkit-line-clamp: 2;          /* максимум 2 строки */
+  -webkit-line-clamp: 2;      /* максимум 2 строки */
   -webkit-box-orient: vertical;
-  overflow: hidden; 
+  overflow: hidden;
 }
+
 
 
 
@@ -124,9 +124,10 @@ body {
 .title-id {
   font-family: "TTTravels";
   font-weight: 700;
-  font-size: 3vh;                /* размер ID */
-  margin-bottom: 0.6vh;          /* ≈ 40px: ID → название */
+  font-size: 3vh;
+  margin-bottom: 1.6vh;   /* фиксировано! */
 }
+
 
 /* строки с инфой */
 
