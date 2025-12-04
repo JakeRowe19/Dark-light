@@ -70,12 +70,12 @@ body {
 .card-bottom {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;   /* НИЧЕГО не “растягиваем” */
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding-top: 3.2vh;              /* divider → страна ≈ 67px */
 }
-.card-bottom .info-line:first-child {
-  margin-top: 1.2vh;
-}
-
+.card-bottom .info-line + .info-line {
+  margin-top: 4.2vh;
 /* ————— элементы ————— */
 
 .title {
@@ -106,7 +106,7 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 2.1vh;
-  margin-top: 0.8vh;            /* фиксированный шаг между строками */
+  margin-top: 0;                   /* базово без отступа */
 }
 
 .price {
