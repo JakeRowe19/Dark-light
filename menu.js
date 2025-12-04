@@ -90,25 +90,50 @@ function formatSpecs(item) {
 
 // Цена
 function formatPrice(item) {
-  // 1. Берём в приоритете столбец с финальной ценой (с формулой)
-  const raw =
-    item["Цена₽"] ||   // так называется твой столбец с формулой
-    item["цена"]  ||   // запасные варианты
-    item["Цена"]  || "";
+  const state = getState(item);               // instock / sale / pending
 
-  if (!raw) return "";
+  // читаем сырые значения из таблицы
+  const rawBase = item["цена"] || item["Цена"] || "";
+  const rawFinal = item["Цена₽"] || "";       // формула из таблицы
+  const rawCoef = item["скидка 10%"] || item["скидка"] || item["коэффициент"] || item["V"] || "";
 
-  // 2. Достаём число из строки: "120₽", " 120 Р", "120,0" → "120"
-  const match = String(raw).match(/(\d+([.,]\d+)?)/);
-  if (!match) return "";
+  // нормализация: оставляем только цифры и точку
+  const num = (str) => {
+    if (!str) return NaN;
+    const cleaned = String(str)
+      .replace(",", ".")
+      .replace(/[^0-9.]/g, "");
+    const n = parseFloat(cleaned);
+    return isNaN(n) ? NaN : n;
+  };
 
-  const num = match[1].replace(",", "."); // "120,0" → "120.0"
-  const value = Number(num);
-  if (!isFinite(value)) return "";
+  const base = num(rawBase);
+  const final = num(rawFinal);
+  const coef = num(rawCoef);
 
-  // 3. Округляем до целого и добавляем знак рубля
-  return Math.round(value) + "₽";
+  let price = NaN;
+
+  // если в таблице есть нормальная финальная цена → берем её
+  if (state === "sale" && !isNaN(final)) {
+    price = final;
+  }
+  // если скидка, но финальная колонка сломана → считаем сами
+  else if (state === "sale" && !isNaN(base) && !isNaN(coef)) {
+    price = Math.round(base * coef);
+  }
+  // обычные позиции
+  else if (!isNaN(base)) {
+    price = base;
+  }
+  // если базовой нет — хотя бы финальную
+  else if (!isNaN(final)) {
+    price = final;
+  }
+
+  if (isNaN(price)) return "";
+  return Math.round(price) + "₽";
 }
+
 
 
 
