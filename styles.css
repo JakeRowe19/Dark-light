@@ -37,7 +37,7 @@ body {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-template-rows: repeat(3, minmax(0, 1fr));
-  gap: 1.8vh 1.5vw;
+  gap: 1.1vh 0.8vw;
 }
 
 /* карточка = ровно размер ячейки */
