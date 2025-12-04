@@ -62,7 +62,7 @@ body {
   justify-content: flex-start;   /* ← было flex-end / center */
   align-items: center;
   text-align: center;
-  padding: 2vh 2vh 0;            /* небольшой верхний отступ, снизу 0 */
+  padding: 1vh 2vh 1vh;            /* небольшой верхний отступ, снизу 0 */
   box-sizing: border-box;
 }
 
@@ -124,7 +124,7 @@ body {
   font-family: "TTTravels";
   font-weight: 700;
   font-size: 3vh;                /* размер ID */
-  margin-bottom: 1.9vh;          /* ≈ 40px: ID → название */
+  margin-bottom: 1vh;          /* ≈ 40px: ID → название */
 }
 
 /* строки с инфой */
