@@ -73,10 +73,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
-  padding-top: 3.2vh;          /* divider → country (как договорились) */
-}
-.card-bottom .info-line + .info-line {
-  margin-top: 2.2vh;
+  padding-top: 3vh;             /* divider → страна, можно чуть крутнуть */
 }
 /* ————— элементы ————— */
 
@@ -109,9 +106,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0;               /* сначала без отступов */
+  margin: 0;                    /* не даём ей своих отступов */
 }
-
+.card-bottom .info-line:first-child {
+  margin-bottom: 2.2vh;         /* фиксированный зазор между 1-й и 2-й строкой */
+}
+.card-bottom .info-line:last-child {
+  margin-top: auto;
+}
 /* заголовок */
 
 .title-id {
@@ -129,13 +131,13 @@ body {
 
 .abv {
   font-size: 2.1vh;
-  margin-top: 2.2vh;
+  margin: 0;
 }
 
 .price {
   font-size: 4.1vh;
   font-weight: 900;
-  margin-top: 2.2vh;
+  margin: 0;
 }
 
 /* бейдж */
