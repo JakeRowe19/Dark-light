@@ -132,14 +132,6 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 
 
-.divider {
-  height: 0.35vh;
-  background: #000;
-  margin: 0.8vh 0 1.2vh;
-  flex-shrink: 0;
-}
-
-
 /* строки с инфой */
 
 .info-line {
