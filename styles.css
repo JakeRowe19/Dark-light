@@ -51,28 +51,24 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
   border-radius: 1.4vh;
   padding: 2vh 1.6vw;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr; /* верхняя половина / divider / нижняя половина */
 }
 
 .card-top {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-
-  padding: 0 1vh;       /* ← горизонтальные отступы внутри верхней половины */
+  padding: 0 2vh;
   box-sizing: border-box;
 }
 
 
 .card-bottom {
-  flex: 1; /* нижняя половина */
-  display: flex;
+   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 
@@ -95,8 +91,7 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
   height: 0.4vh;
   background: #000;
   width: 100%;
-  flex-shrink: 0;
-  margin: 0.6vh 0 1vh;
+  margin: 0.6vh 0 1vh;  /* просто визуальный зазор, не влияет на позицию строки grid */
 }
 
 .info-line {
