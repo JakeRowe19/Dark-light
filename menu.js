@@ -1,8 +1,51 @@
 // ----- НАСТРОЙКИ -----
 
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcUeH0R2aQgSWh0hhjkHEF2j3vSmWaFn-vpEvdl3wmgZavajJXslZR7zB8a8Wk3r2cKkXolnIXrq14/pub?output=csv";
+const CSV_URL_BASE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcUeH0R2aQgSWh0hhjkHEF2j3vSmWaFn-vpEvdl3wmgZavajJXslZR7zB8a8Wk3r2cKkXolnIXrq14/pub?output=csv";
+// чтение CSV → массив объектов
+async function fetchCsv() {
+  // добавляем уникальный параметр, чтобы обойти кэш Google/браузера
+  const url = CSV_URL_BASE + "&_=" + Date.now();
 
+  const res = await fetch(url, { cache: "no-store" });
+  const text = await res.text();
+
+  const lines = text.trim().split(/\r?\n/);
+  const delimiter = lines[0].includes(";") ? ";" : ",";
+  const rows = lines.map(r => r.split(delimiter));
+
+  const headers = rows[0].map(h => sanitize(h));
+  const dataRows = rows.slice(1).filter(r => r[0].trim() !== "");
+
+  return dataRows.map(row => {
+    const obj = {};
+    headers.forEach((h, i) => {
+      obj[h] = sanitize(row[i] || "");
+    });
+    return obj;
+  });
+}
 const ITEMS_PER_SCREEN = 15;
+
+let lastScreenKey = null;
+
+function makeScreenKey(items) {
+  // из этих полей строим строку, чтобы отследить изменение
+  return items.map(item => {
+    const parts = [
+      item["id"],
+      item["название"] || item["Наименование"] || "",
+      item["Страна"] || "",
+      item["крепость"] || "",
+      item["плотность"] || "",
+      item["цена"] || "",
+      item["Наличие"] || "",
+      item["instock"] || "",
+      item["beertype"] || ""
+    ];
+    return parts.join("|");
+  }).join("||");
+}
+
 
 // соответствие beertype -> картинка бейджа
 const BEERTYPE_BADGE = {
@@ -207,5 +250,14 @@ async function renderScreen(screenNumber) {
   const end   = start + ITEMS_PER_SCREEN;
   const items = allItems.slice(start, end);
 
+  // считаем ключ состояния экрана
+  const key = makeScreenKey(items);
+
+  // если ничего не поменялось — вообще не трогаем DOM
+  if (key === lastScreenKey && container.innerHTML.trim() !== "") {
+    return;
+  }
+
+  lastScreenKey = key;
   container.innerHTML = items.map(cardTemplate).join("");
 }
