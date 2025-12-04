@@ -86,16 +86,23 @@ function formatSpecs(item) {
 
 // Цена
 function formatPrice(item) {
-  const state = getState(item);   // "instock" / "sale" / "pending"
-  const base  = item["цена"] || item["Цена"];
-  const sale  = item["Цена₽"] || item["цена со скидкой"];
+  // состояние позиции: instock / sale / pending
+  const state = getState(item);
+
+  // базовая цена (из основного столбца)
+  const base = item["цена"] || item["Цена"];
+
+  // цена с учётом скидки (из столбца с формулой)
+  const sale = item["Цена₽"] || item["цена со скидкой"];
 
   let value;
 
+  // если статус "скидка" и есть цена со скидкой — показываем её
   if (state === "sale" && sale) {
-    value = sale;         // если статус скидка и есть столбец со скидкой
+    value = sale;
   } else {
-    value = base || sale; // иначе обычная цена, а если пустая — хотя бы скидочная
+    // иначе обычная цена, а если её нет — хотя бы скидочную
+    value = base || sale;
   }
 
   if (!value) return "";
