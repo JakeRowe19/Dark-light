@@ -50,9 +50,9 @@ body {
   border: 0.6vh solid #000;
   border-radius: 1.4vh;
   padding: 2vh 1.6vw;
-  position: relative;
+
   display: grid;
-  grid-template-rows: 1fr auto 1fr; /* верхняя половина / divider / нижняя половина */
+  grid-template-rows: 1fr auto 1fr; /* верх / divider / низ */
 }
 
 .card-top {
@@ -61,15 +61,16 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 2vh 3vh;
+  padding: 0 2vh;      /* только по бокам, без 3vh снизу */
   box-sizing: border-box;
 }
 
 
 .card-bottom {
-   display: flex;
-  padding-top: 3vh;
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 
@@ -89,15 +90,12 @@ body {
 
 
 .divider {
-  position: absolute;
-  left: 2vh;
-  right: 2vh;
-  top: 50%;
-  transform: translateY(-50%);
-
   height: 0.4vh;
   background: #000;
+  width: 100%;
+  margin: 0.6vh 0 1vh;
 }
+
 
 .info-line {
   display: flex;
