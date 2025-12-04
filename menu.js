@@ -86,9 +86,9 @@ function formatSpecs(item) {
 
 // Цена
 function formatPrice(item) {
-  const p = item["ЦенКон"] || "";
+  const p = item["цена"] || item["Цена"] || "";
   if (!p) return "";
-  return p + "h";
+  return p + "₽";
 }
 
 
