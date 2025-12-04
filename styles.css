@@ -59,10 +59,10 @@ body {
 .card-top {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;     /* прижаты к divider */
+  justify-content: flex-start;   /* ← было flex-end / center */
   align-items: center;
   text-align: center;
-  padding: 0 2vh;                /* боковые отступы внутри */
+  padding: 2vh 2vh 0;            /* небольшой верхний отступ, снизу 0 */
   box-sizing: border-box;
 }
 
@@ -73,7 +73,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
-  padding-top: 3.2vh;            /* ≈ 67px: divider → страна */
+  padding-top: 3.2vh;          /* divider → country (как договорились) */
 }
 .card-bottom .info-line + .info-line {
   margin-top: 4.2vh;
@@ -90,7 +90,7 @@ body {
   overflow-wrap: break-word;
   word-break: normal;
   max-width: 100%;
-  margin-bottom: 1.4vh;          /* ≈ 30px: название → divider */
+  margin-bottom: 1vh;          /* ≈ 30px: название → divider */
   overflow-wrap: anywhere;
 }
 
@@ -109,8 +109,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 2.1vh;
-  margin-top: 0;                   /* базово без отступа */
+  margin-top: 0;               /* сначала без отступов */
 }
 
 /* заголовок */
@@ -130,12 +129,13 @@ body {
 
 .abv {
   font-size: 2.1vh;
+  margin-top: 2.2vh;
 }
 
 .price {
   font-size: 4.1vh;
   font-weight: 900;
-  margin-top: 4.2vh;
+  margin-top: 2.2vh;
 }
 
 /* бейдж */
