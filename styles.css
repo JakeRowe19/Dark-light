@@ -43,8 +43,8 @@ body {
 /* карточка = ровно размер ячейки */
 
 .beer-card {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto 16vh; 
+   display: grid;
+  grid-template-rows: minmax(0, 1fr) auto 16vh;  
   /* верх гибкий, но НЕЛЬЗЯ расти больше доступного пространства */
   
   height: 100%;
@@ -94,10 +94,16 @@ body {
 
 
 .card-bottom {
-  margin-top: auto;            /* весь нижний блок прижали к низу карточки */
-  padding: 3vh 2vh 2vh;        /* отступ сверху/снизу внутри нижнего блока */
-  box-sizing: border-box;
+  grid-row: 3;     /* ← фиксируем в 3-й строке */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  padding-bottom: 2vh;
+  min-height: 0;
+  max-height: 16vh;
+  overflow: hidden;
 }
+
 /* ————— элементы ————— */
 
 .title {
