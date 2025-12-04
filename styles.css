@@ -61,7 +61,7 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 2vh;
+  padding: 0 1vh;
   box-sizing: border-box;
 }
 
