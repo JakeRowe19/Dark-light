@@ -61,7 +61,7 @@ body {
   justify-content: flex-end;   /* было center → стало flex-end */
   align-items: center;
   text-align: center;
-  padding: 0 2vh;
+  padding: 0 1vh;
   box-sizing: border-box;
 }
 
