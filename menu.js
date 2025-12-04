@@ -90,28 +90,26 @@ function formatSpecs(item) {
 
 // Цена
 function formatPrice(item) {
-  // состояние позиции: instock / sale / pending
-  const state = getState(item);
+  // 1. Берём в приоритете столбец с финальной ценой (с формулой)
+  const raw =
+    item["Цена₽"] ||   // так называется твой столбец с формулой
+    item["цена"]  ||   // запасные варианты
+    item["Цена"]  || "";
 
-  // базовая цена (из основного столбца)
-  const base = item["цена"] || item["Цена"];
+  if (!raw) return "";
 
-  // цена с учётом скидки (из столбца с формулой)
-  const sale = item["Цена₽"] || item["цена со скидкой"];
+  // 2. Достаём число из строки: "120₽", " 120 Р", "120,0" → "120"
+  const match = String(raw).match(/(\d+([.,]\d+)?)/);
+  if (!match) return "";
 
-  let value;
+  const num = match[1].replace(",", "."); // "120,0" → "120.0"
+  const value = Number(num);
+  if (!isFinite(value)) return "";
 
-  // если статус "скидка" и есть цена со скидкой — показываем её
-  if (state === "sale" && sale) {
-    value = sale;
-  } else {
-    // иначе обычная цена, а если её нет — хотя бы скидочную
-    value = base || sale;
-  }
-
-  if (!value) return "";
-  return value + "₽";
+  // 3. Округляем до целого и добавляем знак рубля
+  return Math.round(value) + "₽";
 }
+
 
 
 
