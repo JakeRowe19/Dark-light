@@ -28,22 +28,6 @@ async function fetchCsv() {
   });
 }
 
-async function renderScreen(screenNumber) {
-  const container = document.getElementById("menu");
-  if (!container) return;
-
-  const allItems = await fetchCsv();
-
-  // сортируем по id
-  allItems.sort((a, b) => Number(a["id"]) - Number(b["id"]));
-
-  const start = (screenNumber - 1) * ITEMS_PER_SCREEN;
-  const end   = start + ITEMS_PER_SCREEN;
-  const items = allItems.slice(start, end);
-
-  // каждый раз просто перерисовываем весь экран
-  container.innerHTML = items.map(cardTemplate).join("");
-}
 
 
 // соответствие beertype -> картинка бейджа
@@ -228,14 +212,6 @@ async function renderScreen(screenNumber) {
   const end   = start + ITEMS_PER_SCREEN;
   const items = allItems.slice(start, end);
 
-  // считаем ключ состояния экрана
-  const key = makeScreenKey(items);
-
-  // если ничего не поменялось — вообще не трогаем DOM
-  if (key === lastScreenKey && container.innerHTML.trim() !== "") {
-    return;
-  }
-
-  lastScreenKey = key;
+  // каждый раз просто перерисовываем весь экран
   container.innerHTML = items.map(cardTemplate).join("");
 }
