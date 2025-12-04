@@ -90,51 +90,35 @@ function formatSpecs(item) {
 
 // Цена
 function formatPrice(item) {
-  const state = getState(item);               // instock / sale / pending
-
-  // читаем сырые значения из таблицы
+  // 1. Базовая цена из столбца "цена"
   const rawBase = item["цена"] || item["Цена"] || "";
-  const rawFinal = item["Цена₽"] || "";       // формула из таблицы
-  const rawCoef = item["скидка 10%"] || item["скидка"] || item["коэффициент"] || item["V"] || "";
 
-  // нормализация: оставляем только цифры и точку
-  const num = (str) => {
-    if (!str) return NaN;
-    const cleaned = String(str)
+  // оставляем только цифры и точку
+  const base = (() => {
+    const cleaned = String(rawBase)
       .replace(",", ".")
       .replace(/[^0-9.]/g, "");
     const n = parseFloat(cleaned);
     return isNaN(n) ? NaN : n;
-  };
+  })();
 
-  const base = num(rawBase);
-  const final = num(rawFinal);
-  const coef = num(rawCoef);
+  if (isNaN(base)) return "";
 
-  let price = NaN;
+  // 2. Читаем столбец "Наличие" и вытаскиваем из него скидку в процентах
+  const availability = (item["Наличие"] || "").toLowerCase();
 
-  // если в таблице есть нормальная финальная цена → берем её
-  if (state === "sale" && !isNaN(final)) {
-    price = final;
-  }
-  // если скидка, но финальная колонка сломана → считаем сами
-  else if (state === "sale" && !isNaN(base) && !isNaN(coef)) {
-    price = Math.round(base * coef);
-  }
-  // обычные позиции
-  else if (!isNaN(base)) {
-    price = base;
-  }
-  // если базовой нет — хотя бы финальную
-  else if (!isNaN(final)) {
-    price = final;
+  let discountPercent = 0;
+  const match = availability.match(/(\d+)\s*%/); // ищем число перед %
+  if (match) {
+    discountPercent = Number(match[1]); // "скидка 15%" -> 15
   }
 
-  if (isNaN(price)) return "";
-  return Math.round(price) + "₽";
+  // 3. Считаем цену со скидкой (если скидки нет, discountPercent = 0)
+  const coef = 1 - discountPercent / 100;
+  const final = Math.round(base * coef);
+
+  return final + "₽";
 }
-
-
 
 
 
