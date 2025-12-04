@@ -36,7 +36,7 @@ body {
   padding: 2vh 2vw;              /* поля от краёв экрана */
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 1.8vh 1.5vw;
 }
 
@@ -89,10 +89,14 @@ grid-template-rows: repeat(3, minmax(0, 1fr));
 
 
 .divider {
+  position: absolute;
+  left: 2vh;
+  right: 2vh;
+  top: 50%;
+  transform: translateY(-50%);
+
   height: 0.4vh;
   background: #000;
-  width: 100%;
-  margin: 0.6vh 0 1vh;  /* просто визуальный зазор, не влияет на позицию строки grid */
 }
 
 .info-line {
