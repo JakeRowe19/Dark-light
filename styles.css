@@ -89,6 +89,10 @@ body {
   max-width: 100%;
   margin-bottom: 1vh;          /* ≈ 30px: название → divider */
   overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;          /* максимум 2 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden; 
 }
 
 
