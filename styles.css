@@ -76,7 +76,7 @@ body {
   padding-top: 3.2vh;          /* divider → country (как договорились) */
 }
 .card-bottom .info-line + .info-line {
-  margin-top: 4.2vh;
+  margin-top: 2.2vh;
 }
 /* ————— элементы ————— */
 
