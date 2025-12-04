@@ -155,19 +155,26 @@ html, body {
 
 /* === В ПУТИ === */
 
-.state-pending .card-bottom,
-.state-pending .info-line {
+/* === В ПУТИ === */
+
+/* убираем только нижний блок (страна / тип / абв / цена) */
+.state-pending .card-bottom {
   display: none !important;
 }
 
-.state-pending .title-id,
-.state-pending .title {
-  opacity: 0; /* скрываем, но оставляем место под них */
+/* ID и название остаются! */
+
+.state-pending::after {
+  content: "В пути";
+  grid-row: 3;
+  align-self: center;
+  justify-self: center;
+
+  font-size: 4vh;
+  font-weight: 700;
+  text-align: center;
 }
 
-.state-pending .divider {
-  margin-top: 2vh;
-}
 
 .state-pending::after {
   content: "В пути";
