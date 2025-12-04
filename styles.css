@@ -88,9 +88,10 @@ body {
   text-align: center;
   white-space: normal;
   overflow-wrap: break-word;
-  word-break: break-word;
+  word-break: normal;
   max-width: 100%;
   margin-bottom: 1.4vh;          /* ≈ 30px: название → divider */
+  overflow-wrap: anywhere;
 }
 
 
@@ -161,15 +162,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 8vh;
+  font-weight: 700;
+  text-align: center;
 }
 
 .state-pending .divider,
-.state-pending .country,
-.state-pending .badge-wrap,
-.state-pending .abv,
-.state-pending .price {
-  display: none;
+.state-pending .card-bottom,
+.state-pending .info-line,
+.state-pending .title,
+.state-pending .title-id {
+  display: none !important;
 }
+
 
 .state-pending::after {
   content: "В пути";
