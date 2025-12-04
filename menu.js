@@ -17,8 +17,15 @@ const BEERTYPE_BADGE = {
 // ----- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ -----
 
 function stripQuotes(str) {
-  return str.replace(/^"+|"+$/g, "").replace(/""/g, '"').trim();
+  // убираем только одну пару внешних кавычек
+  if (str.startsWith('"') && str.endsWith('"')) {
+    str = str.slice(1, -1);
+  }
+  // заменяем двойные кавычки внутри на одиночные
+  str = str.replace(/""/g, '"');
+  return str.trim();
 }
+
 
 function sanitize(value) {
   if (value == null) return "";
