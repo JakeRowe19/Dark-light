@@ -22,7 +22,7 @@ function stripQuotes(str) {
 
 function sanitize(value) {
   if (value == null) return "";
-  return stripQuotes(String(value));
+  return String(value).trim();
 }
 
 // чтение CSV → массив объектов
