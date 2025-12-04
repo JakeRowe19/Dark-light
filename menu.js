@@ -16,7 +16,7 @@ const BEERTYPE_BADGE = {
 
 // ----- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ -----
 
-ffunction stripQuotes(str) {
+function stripQuotes(str) {
   if (str == null) return "";
   let s = String(str);
 
