@@ -22,8 +22,8 @@ function stripQuotes(str) {
     str = str.slice(1, -1);
   }
   // заменяем двойные кавычки внутри на одиночные
-  str = str.replace(/""/g, '"');
-  return str.trim();
+  function stripQuotes(str) {
+  return str.replace(/^"+|"+$/g, "").replace(/""/g, '"').trim();
 }
 
 
@@ -86,10 +86,22 @@ function formatSpecs(item) {
 
 // Цена
 function formatPrice(item) {
-  const p = item["цена"] || item["Цена"] || "";
-  if (!p) return "";
-  return p + "₽";
+  const state = getState(item);   // "instock" / "sale" / "pending"
+  const base  = item["цена"] || item["Цена"];
+  const sale  = item["Цена₽"] || item["цена со скидкой"];
+
+  let value;
+
+  if (state === "sale" && sale) {
+    value = sale;         // если статус скидка и есть столбец со скидкой
+  } else {
+    value = base || sale; // иначе обычная цена, а если пустая — хотя бы скидочная
+  }
+
+  if (!value) return "";
+  return value + "₽";
 }
+
 
 
 // Страна
