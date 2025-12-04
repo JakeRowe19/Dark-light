@@ -81,27 +81,6 @@ function sanitize(value) {
 }
 
 
-// чтение CSV → массив объектов
-async function fetchCsv() {
-  const res = await fetch(CSV_URL);
-  const text = await res.text();
-
-  const lines = text.trim().split(/\r?\n/);
-  const delimiter = lines[0].includes(";") ? ";" : ",";
-  const rows = lines.map(r => r.split(delimiter));
-
-  const headers = rows[0].map(h => sanitize(h));
-  const dataRows = rows.slice(1).filter(r => r[0].trim() !== "");
-
-  return dataRows.map(row => {
-    const obj = {};
-    headers.forEach((h, i) => {
-      obj[h] = sanitize(row[i] || "");
-    });
-    return obj;
-  });
-}
-
 // ----- МАППИНГ ПОЛЕЙ И СОСТОЯНИЙ -----
 
 function getState(item) {
