@@ -33,7 +33,7 @@ body {
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
-  padding: 2vh 2vw;              /* поля от краёв экрана */
+  padding: 2vh 2vw;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-template-rows: repeat(3, minmax(0, 1fr));
@@ -49,19 +49,20 @@ body {
   background: #ffffff;
   border: 0.6vh solid #000;
   border-radius: 1.4vh;
-  padding: 2vh 1.6vw;
+
+  padding: 1.4vh 1.4vh;          /* ≈ 30px padding как в Figma */
 
   display: grid;
-  grid-template-rows: 1fr auto 1fr; /* верх / divider / низ */
+  grid-template-rows: 1fr auto 1fr;   /* верх / divider / низ */
 }
 
 .card-top {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;   /* было center → стало flex-end */
+  justify-content: flex-end;     /* прижаты к divider */
   align-items: center;
   text-align: center;
-  padding: 0 1vh;
+  padding: 0 2vh;                /* боковые отступы внутри */
   box-sizing: border-box;
 }
 
@@ -72,24 +73,26 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
-  padding-top: 3.2vh;              /* divider → страна ≈ 67px */
+  padding-top: 3.2vh;            /* ≈ 67px: divider → страна */
 }
 .card-bottom .info-line + .info-line {
   margin-top: 4.2vh;
+}
 /* ————— элементы ————— */
 
 .title {
   font-family: "TTravels";
   font-weight: 700;
-  font-size: 3.4vh;
+  font-size: 3.6vh;
   line-height: 1.05;
   text-align: center;
   white-space: normal;
   overflow-wrap: break-word;
   word-break: break-word;
   max-width: 100%;
-  margin-bottom: 0.8vh;   /* ← фиксированный зазор до divider */
+  margin-bottom: 1.4vh;          /* ≈ 30px: название → divider */
 }
+
 
 
 
@@ -97,7 +100,7 @@ body {
   height: 0.4vh;
   background: #000;
   width: 100%;
-  margin: 0.6vh 0 1vh;
+  margin: 0;                     /* позицию задаёт grid-строка */
 }
 
 
@@ -109,58 +112,29 @@ body {
   margin-top: 0;                   /* базово без отступа */
 }
 
-.price {
-  font-size: 2vw;
-  font-weight: 900;
-}
-
-.badge {
-  height: 3.2vh;
-}
-
-
-
 /* заголовок */
 
 .title-id {
-  font-size: 2vw;
-  margin-bottom: 0.4vh;
-  font-family: "TTTravels";
+  font-family: "TTravels";
   font-weight: 700;
+  font-size: 3vh;                /* размер ID */
+  margin-bottom: 1.9vh;          /* ≈ 40px: ID → название */
 }
-
-.title {
-  font-size: 2vw;
-  font-family: "TTTravels";
-  font-weight: 700;
-  line-height: 1.05;
-  white-space: normal;
-  overflow-wrap: break-word;
-  text-align: center;
-}
-
 
 /* строки с инфой */
 
-.info-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.2vw;
-  margin-top: auto;
-}
-
 .country {
-  font-size: 1.3vw;
+  font-size: 2.1vh;
 }
 
 .abv {
-  font-size: 1.2vw;
+  font-size: 2.1vh;
 }
 
 .price {
-  font-size: 2.2vw;
+  font-size: 4.1vh;
   font-weight: 900;
+  margin-top: 4.2vh;
 }
 
 /* бейдж */
