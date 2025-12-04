@@ -13,7 +13,6 @@ const BEERTYPE_BADGE = {
   "beertype=other":   "beertype=other.png",
   "beertype=n/a":     "nonalc.png"
 };
-
 // ----- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ -----
 
 function stripQuotes(str) {
