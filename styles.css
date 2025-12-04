@@ -51,19 +51,20 @@ body {
   border-radius: 1.4vh;
   padding: 1.4vh 1.4vh;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 42% auto 35%;   /* фиксированные зоны! */
 }
 
 .card-top {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: flex-start;
 
-  padding-top: 3vh;     /* фиксированный отступ сверху */
-  padding-bottom: 0;     /* нижний нам не нужен — divider живёт внизу */
+  padding-top: 2vh;
+  overflow: hidden;        /* ← ключевой момент! */
 }
+
 
 
 
@@ -80,13 +81,11 @@ body {
   font-weight: 700;
   font-size: 3.6vh;
   line-height: 1.05;
-  text-align: center;
 
-  max-width: 100%;
-  margin-bottom: 3vh;     /* расстояние от названия → divider */
+  margin-bottom: 3vh;
 
   display: -webkit-box;
-  -webkit-line-clamp: 2;      /* максимум 2 строки */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
