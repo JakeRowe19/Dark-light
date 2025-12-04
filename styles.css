@@ -124,7 +124,7 @@ body {
   font-family: "TTTravels";
   font-weight: 700;
   font-size: 3vh;                /* размер ID */
-  margin-bottom: 1vh;          /* ≈ 40px: ID → название */
+  margin-bottom: 0.6vh;          /* ≈ 40px: ID → название */
 }
 
 /* строки с инфой */
