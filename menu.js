@@ -160,7 +160,6 @@ function cardTemplate(item) {
   const price   = formatPrice(item);     // "120₽"
   const country = getCountry(item);
   const badge   = getBadge(item);        // <img ...> или ""
-  console.log(item["цена"], item["Цена₽"], getState(item), formatPrice(item));
   const isPending = state === "pending";
 
   return `
