@@ -155,7 +155,6 @@ html, body {
 
 /* === В ПУТИ === */
 
-/* === В ПУТИ === */
 
 /* убираем только нижний блок (страна / тип / абв / цена) */
 .state-pending .card-bottom {
@@ -170,17 +169,6 @@ html, body {
   align-self: center;
   justify-self: center;
 
-  font-size: 4vh;
-  font-weight: 700;
-  text-align: center;
-}
-
-
-.state-pending::after {
-  content: "В пути";
-  grid-row: 3;
-  align-self: center;
-  justify-self: center;
   font-size: 4vh;
   font-weight: 700;
   text-align: center;
