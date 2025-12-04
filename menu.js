@@ -45,15 +45,6 @@ async function renderScreen(screenNumber) {
   container.innerHTML = items.map(cardTemplate).join("");
 }
 
-const CSV_URL_BASE = "...output=csv";
-
-async function fetchCsv() {
-  const url = CSV_URL_BASE + "&_=" + Date.now();
-
-  const res = await fetch(url, { cache: "no-store" });
-  ...
-}
-
 
 // соответствие beertype -> картинка бейджа
 const BEERTYPE_BADGE = {
