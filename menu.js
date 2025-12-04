@@ -28,24 +28,30 @@ async function fetchCsv() {
   });
 }
 
-let lastScreenKey = null;
+async function renderScreen(screenNumber) {
+  const container = document.getElementById("menu");
+  if (!container) return;
 
-function makeScreenKey(items) {
-  // из этих полей строим строку, чтобы отследить изменение
-  return items.map(item => {
-    const parts = [
-      item["id"],
-      item["название"] || item["Наименование"] || "",
-      item["Страна"] || "",
-      item["крепость"] || "",
-      item["плотность"] || "",
-      item["цена"] || "",
-      item["Наличие"] || "",
-      item["instock"] || "",
-      item["beertype"] || ""
-    ];
-    return parts.join("|");
-  }).join("||");
+  const allItems = await fetchCsv();
+
+  // сортируем по id
+  allItems.sort((a, b) => Number(a["id"]) - Number(b["id"]));
+
+  const start = (screenNumber - 1) * ITEMS_PER_SCREEN;
+  const end   = start + ITEMS_PER_SCREEN;
+  const items = allItems.slice(start, end);
+
+  // каждый раз просто перерисовываем весь экран
+  container.innerHTML = items.map(cardTemplate).join("");
+}
+
+const CSV_URL_BASE = "...output=csv";
+
+async function fetchCsv() {
+  const url = CSV_URL_BASE + "&_=" + Date.now();
+
+  const res = await fetch(url, { cache: "no-store" });
+  ...
 }
 
 
