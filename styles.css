@@ -81,7 +81,7 @@ body {
 /* ————— элементы ————— */
 
 .title {
-  font-family: "TTravels";
+  font-family: "TTTravels";
   font-weight: 700;
   font-size: 3.6vh;
   line-height: 1.05;
@@ -115,7 +115,7 @@ body {
 /* заголовок */
 
 .title-id {
-  font-family: "TTravels";
+  font-family: "TTTravels";
   font-weight: 700;
   font-size: 3vh;                /* размер ID */
   margin-bottom: 1.9vh;          /* ≈ 40px: ID → название */
