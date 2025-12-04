@@ -162,34 +162,32 @@ body {
   color: #000;
 }
 
-/* В пути */
-
-.state-pending {
+/* --- Состояние “В пути” --- */
+.beer-card.state-pending .card-bottom {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 4vh;
-  font-weight: 700;
-  text-align: center;
 }
 
-.state-pending .divider,
-.state-pending .card-bottom,
-.state-pending .info-line,
-.state-pending .title,
-.state-pending .title-id {
+.beer-card.state-pending .country,
+.beer-card.state-pending .badge-wrap,
+.beer-card.state-pending .abv,
+.beer-card.state-pending .price {
   display: none !important;
 }
 
-
-.state-pending::after {
+.beer-card.state-pending .card-bottom::after {
   content: "В пути";
-  font-size: 2.4vw;
-  font-weight: 900;
+
+  font-family: "TTTravels";
+  font-weight: 700;
+  font-size: 4vh;
+  line-height: 1;
   text-align: center;
+
+  display: block;
   width: 100%;
 }
-
 /* Скидка */
 
 .state-sale .price {
