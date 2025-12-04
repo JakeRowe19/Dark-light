@@ -215,3 +215,5 @@ async function renderScreen(screenNumber) {
   // каждый раз просто перерисовываем весь экран
   container.innerHTML = items.map(cardTemplate).join("");
 }
+
+}
