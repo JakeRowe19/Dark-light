@@ -58,12 +58,13 @@ body {
 .card-top {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;   /* было center → стало flex-end */
   align-items: center;
   text-align: center;
-  padding: 0 2vh;      /* только по бокам, без 3vh снизу */
+  padding: 0 2vh;
   box-sizing: border-box;
 }
+
 
 
 .card-bottom {
@@ -77,16 +78,18 @@ body {
 /* ————— элементы ————— */
 
 .title {
-  font-size: 3.6vh;
+  font-family: "TTravels";
+  font-weight: 700;
+  font-size: 3.4vh;
   line-height: 1.05;
   text-align: center;
-
   white-space: normal;
-  overflow-wrap: break-word; /* разрешаем переносить длинные слова */
+  overflow-wrap: break-word;
   word-break: break-word;
-
   max-width: 100%;
+  margin-bottom: 0.8vh;   /* ← фиксированный зазор до divider */
 }
+
 
 
 .divider {
