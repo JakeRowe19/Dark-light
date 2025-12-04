@@ -154,6 +154,7 @@ function cardTemplate(item) {
 
 
 
+
 // ----- РЕНДЕР ЭКРАНА -----
 
 async function renderScreen(screenNumber) {
