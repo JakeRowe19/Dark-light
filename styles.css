@@ -61,8 +61,7 @@ body {
   align-items: center;
   justify-content: flex-start;
 
-  padding-top: 2vh;
-  overflow: hidden;        /* ← ключевой момент! */
+  padding-top: 1vh;        /* ← ключевой момент! */
 }
 
 
