@@ -166,7 +166,7 @@ function cardTemplate(item) {
     <div class="beer-card state-${state}">
       <div class="card-top">
         <div class="title-line">
-          <span class="title-id">${id}</span>
+          <span class="title-id">${id}. </span>
           <span class="title">${name}</span>
       </div>
 </div>
