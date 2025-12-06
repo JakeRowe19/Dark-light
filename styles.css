@@ -93,7 +93,7 @@ html, body {
 
 .divider {
   grid-row: 2;
-  height: 0.4vh;
+  height: 0.2vh;
   background: #000;
   width: 100%;
   margin: 1vh 0;
@@ -111,8 +111,8 @@ html, body {
   height: 100%;
   box-sizing: border-box;
 
-  padding-top: 1vh;
-  padding-bottom: 1vh;
+  padding-top: 0.5vh;
+  padding-bottom: 0.6vh;
 }
 
 /* страна / тип / цена / крепость */
