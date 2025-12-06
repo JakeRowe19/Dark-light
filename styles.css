@@ -63,7 +63,7 @@ html, body {
   text-align: center;
 
   padding-top: 0.5vh;
-  padding-bottom: 0.6vh;
+  padding-bottom: 0.2vh;
 
   min-height: 7vh;     /* не меньше */
   max-height: 12vh;    /* не больше */
