@@ -75,7 +75,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center; /* центрируем как раньше было */
-  gap: 0.5vh;              /* расстояние между ID и названием */
+  gap: 0.2vh;              /* расстояние между ID и названием */
   width: 100%;
   overflow: hidden;
 }
