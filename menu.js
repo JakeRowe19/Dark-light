@@ -168,7 +168,6 @@ function cardTemplate(item) {
         <div class="title-id">${id}</div>
         <div class="title">${name}</div>
       </div>
-    </div>
 
       <div class="card-bottom">
         <div class="divider"></div>
