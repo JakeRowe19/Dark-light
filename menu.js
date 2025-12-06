@@ -165,9 +165,11 @@ function cardTemplate(item) {
   return `
     <div class="beer-card state-${state}">
       <div class="card-top">
-        <div class="title-id">${id}</div>
-        <div class="title">${name}</div>
+        <div class="title-line">
+          <span class="title-id">${id}</span>
+          <span class="title">${name}</span>
       </div>
+</div>
 
       <div class="card-bottom">
         <div class="divider"></div>
