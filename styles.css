@@ -96,7 +96,7 @@ html, body {
   height: 0.2vh;
   background: #000;
   width: 100%;
-  margin: 1vh 0;
+  margin: 0.6vh 0;
   flex-shrink: 0;
 }
 
@@ -111,7 +111,7 @@ html, body {
   height: 100%;
   box-sizing: border-box;
 
-  padding-top: 0.5vh;
+  padding-top: 0.3vh;
   padding-bottom: 0.6vh;
 }
 
@@ -135,7 +135,7 @@ html, body {
 
 /* цена */
 .price {
-  font-size: 4vh;
+  font-size: 5.1vh;
   font-weight: 900;
 }
 
@@ -145,7 +145,7 @@ html, body {
   justify-content: flex-end;
 }
 .badge {
-  height: 3.2vh;
+  height: 4.2vh;
 }
 
 /* ===== Состояния ===== */
