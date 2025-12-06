@@ -72,7 +72,7 @@ html, body {
 
 /* ID */
 .title-id {
-  font-size: 4.2vh;
+  font-size: 3.2vh;
   font-weight: 700;
   margin-bottom: 0vh;
 }
@@ -112,7 +112,7 @@ html, body {
   box-sizing: border-box;
 
   padding-top: 0.3vh;
-  padding-bottom: 0.6vh;
+  padding-bottom: 0.1vh;
 }
 
 /* страна / тип / цена / крепость */
