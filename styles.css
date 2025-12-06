@@ -70,11 +70,21 @@ html, body {
   overflow: hidden;    /* название не вылезает */
 }
 
+
+.title-line {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* центрируем как раньше было */
+  gap: 0.5vh;              /* расстояние между ID и названием */
+  width: 100%;
+  overflow: hidden;
+}
+
 /* ID */
 .title-id {
   font-size: 3.3vh;
   font-weight: 700;
-  margin-bottom: 0.2vh;
+  margin-bottom: 0vh;
 }
 
 /* Название */
