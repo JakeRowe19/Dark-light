@@ -164,13 +164,12 @@ function cardTemplate(item) {
 
   return `
     <div class="beer-card state-${state}">
-      <div class="card-top">
-        <div class="title-id">${id}</div>
-        <div class="title">${name}</div>
-      </div>
-
-      <div class="card-bottom">
-        <div class="divider"></div>
+        <div class="card-top">
+          <div class="title-id">${id}</div>
+          <div class="title">${name}</div>
+        </div>
+        <div class="card-bottom">
+          <div class="divider"></div>
 
         ${
           isPending
@@ -189,6 +188,7 @@ function cardTemplate(item) {
             `
         }
       </div>
+    </div>
     </div>
   `;
 }
