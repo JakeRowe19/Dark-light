@@ -87,7 +87,7 @@ function formatSpecs(item) {
   const ogRaw  = Number(item["плотность"]);
   
   const abv = abvRaw ? (abvRaw / 10).toFixed(1) + "%" : "";
-  const og  = ogRaw ? ogRaw + "°P" : "";
+  const og  = ogRaw ? ogRaw + "OG" : "";
 
   return [abv, og].filter(Boolean).join(" ");
 }
