@@ -11,8 +11,13 @@
   <script src="menu.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      renderScreen(2); // экран 2
-    });
+    // первый рендер
+    renderScreen(1);
+    // дальше: раз в 5 секунд проверяем csv
+    setInterval(() => {
+      renderScreen(1);
+    }, 15000); // 5000 мс = 5 секунд
+  });
   </script>
 </body>
 </html>
