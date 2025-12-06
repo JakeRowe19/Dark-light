@@ -70,16 +70,6 @@ html, body {
   overflow: hidden;    /* название не вылезает */
 }
 
-
-.title-line {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* центрируем как раньше было */
-  gap: 0.2vh;              /* расстояние между ID и названием */
-  width: 100%;
-  overflow: hidden;
-}
-
 /* ID */
 .title-id {
   font-size: 4.2vh;
