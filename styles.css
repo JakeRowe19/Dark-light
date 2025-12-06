@@ -72,15 +72,15 @@ html, body {
 
 /* ID */
 .title-id {
-  font-size: 2.3vh;
-  font-weight: 700;
+  font-size: 3.3vh;
+  font-weight: 900;
   margin-bottom: 1vh;
 }
 
 /* Название */
 .title {
-  font-size: 3.5vh;
-  font-weight: 700;
+  font-size: 5.5vh;
+  font-weight: 900;
   line-height: 1.05;
   white-space: normal;
   overflow-wrap: break-word;
