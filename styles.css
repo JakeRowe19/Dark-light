@@ -30,7 +30,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 1.8vh 1.5vw;
+  gap: 1.2vh 1.1vw;
 }
 
 /* === Карточка === */
