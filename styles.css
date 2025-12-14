@@ -164,7 +164,7 @@ html, body {
 /* === В ПУТИ === */
 
 .price-pending {
-  font-size: 4.5vh;     /* чуть меньше цены, выглядит аккуратно */
+  font-size: 4.2vh;     /* чуть меньше цены, выглядит аккуратно */
   font-weight: 700;
   font-style: italic;
   color: #c00000;       /* красный */
