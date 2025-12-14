@@ -160,42 +160,39 @@ function getBadge(item) {
 // ----- ШАБЛОН КАРТОЧКИ -----
 
 function cardTemplate(item) {
-  const state   = getState(item);        // instock / sale / pending ...
+  const state   = getState(item);
   const id      = getId(item);
   const name    = getName(item);
-  const specs   = formatSpecs(item);     // "4.2% 12°P"
-  const price   = formatPrice(item);     // "120₽"
+  const specs   = formatSpecs(item);
   const country = getCountry(item);
-  const badge   = getBadge(item);        // <img ...> или ""
-  const isPending = state === "pending";
+  const badge   = getBadge(item);
+  const price   = formatPrice(item);
+
+  const priceHtml =
+    state === "pending"
+      ? `<span class="price-pending">В пути</span>`
+      : `<span class="price">${price}</span>`;
 
   return `
     <div class="beer-card state-${state}">
-        <div class="card-top">
-          <div class="title-id">${id}</div>
-          <div class="title">${name}</div>
-        </div>
-        <div class="card-bottom">
-          <div class="divider"></div>
-
-        ${
-          isPending
-            ? `
-              <div class="pending-text">В пути</div>
-            `
-            : `
-              <div class="info-line">
-                <span class="country">${country}</span>
-                ${badge ? `<span class="badge-wrap">${badge}</span>` : ""}
-              </div>
-              <div class="info-line">
-                <span class="abv">${specs}</span>
-                <span class="price">${price}</span>
-              </div>
-            `
-        }
+      <div class="card-top">
+        <div class="title-id">${id}</div>
+        <div class="title">${name}</div>
       </div>
-    </div>
+
+      <div class="card-bottom">
+        <div class="divider"></div>
+
+        <div class="info-line">
+          <span class="country">${country}</span>
+          ${badge ? `<span class="badge-wrap">${badge}</span>` : ""}
+        </div>
+
+        <div class="info-line">
+          <span class="abv">${specs}</span>
+          ${priceHtml}
+        </div>
+      </div>
     </div>
   `;
 }
