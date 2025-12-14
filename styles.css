@@ -9,6 +9,12 @@
   src: url("./fonts/TTTravels-Bold.ttf") format("truetype");
   font-weight: 700;
 }
+@font-face {
+  font-family: "TTTravels";
+  src: url("./fonts/TTTravels-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
 
 /* === База === */
 html, body {
@@ -157,21 +163,9 @@ html, body {
 
 /* === В ПУТИ === */
 
-
-/* убираем только нижний блок (страна / тип / абв / цена) */
-.state-pending .card-bottom {
-  display: none !important;
-}
-
-/* ID и название остаются! */
-
-.state-pending::after {
-  content: "В пути";
-  grid-row: 3;
-  align-self: center;
-  justify-self: center;
-
-  font-size: 4vh;
+.price-pending {
+  font-size: 4.5vh;     /* чуть меньше цены, выглядит аккуратно */
   font-weight: 700;
-  text-align: center;
+  font-style: italic;
+  color: #c00000;       /* красный */
 }
