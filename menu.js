@@ -31,6 +31,15 @@ async function fetchCsv() {
   });
 }
 
+function getAccent(item) {
+  const raw = (item["Акцент"] || "").trim().toLowerCase();
+  if (!raw || raw === "-") return "";
+
+  const file = ACCENT_BADGE[raw];
+  if (!file) return "";
+
+  return `<img class="accent-badge" src="img/${file}" alt="${raw}">`;
+}
 
 
 
@@ -45,6 +54,12 @@ const BEERTYPE_BADGE = {
   "beertype=wheat":   "beertype=wheat.png",
   "beertype=cider":   "beertype=cider.png",
   "beertype=mead":   "beertype=mead.png"
+};
+
+const ACCENT_BADGE = {
+  "новинка": "accent-new.png",
+  "медаль": "medal.png",
+  "хит": "accent-hit.png"
 };
 
 // ----- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ -----
@@ -160,6 +175,7 @@ function getBadge(item) {
 // ----- ШАБЛОН КАРТОЧКИ -----
 
 function cardTemplate(item) {
+  const accent  = getAccent(item);
   const state   = getState(item);
   const id      = getId(item);
   const name    = getName(item);
@@ -175,6 +191,7 @@ function cardTemplate(item) {
 
   return `
     <div class="beer-card state-${state}">
+      ${accent}
       <div class="card-top">
         <div class="title-id">${id}</div>
         <div class="title">${name}</div>
@@ -197,7 +214,25 @@ function cardTemplate(item) {
   `;
 }
 
+function orderCardTemplate() {
+  return `
+    <div class="beer-card state-order">
+      <div class="card-top">
+        <div class="title">Пиво под заказ</div>
+      </div>
 
+      <div class="card-bottom">
+        <div class="divider"></div>
+
+        <div class="info-line" style="justify-content:center; text-align:center;">
+          <span class="order-text">
+            Можете заказать у продавца
+          </span>
+        </div>
+      </div>
+    </div>
+  `;
+}
 
 
 // ----- РЕНДЕР ЭКРАНА -----
