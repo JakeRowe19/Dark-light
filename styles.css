@@ -165,7 +165,48 @@ html, body {
 
 .price-pending {
   font-size: 4.2vh;     /* чуть меньше цены, выглядит аккуратно */
-  font-weight: 700;
+  font-weight: 600;
   font-style: italic;
   color: #c00000;       /* красный */
+}
+
+.state-order .card-bottom {
+  justify-content: flex-start;   /* не растягиваем вниз */
+  padding-top: 0.6vh;            /* ближе к divider */
+}
+
+
+.order-text {
+  font-size: 2.8vh;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.state-order .order-text {
+  margin-top: 1vh;             /* прижимаем вверх */
+}
+
+
+/* опускаем верхний текст у order-карточки */
+.state-order .card-top {
+  padding-top: 2.5vh;   /* опускаем вниз */
+  padding-bottom: 0.6vh;
+}
+
+
+
+.beer-card {
+  position: relative; /* нужно для абсолютного бейджа */
+}
+
+/* картинка-акцент в правом верхнем углу */
+.accent-badge {
+  position: absolute;
+  top: 0.8vh;
+  right: 0.8vh;
+  height: 4.2vh;      /* можно подогнать */
+  width: auto;
+  z-index: 5;
+  pointer-events: none; /* чтобы не мешала кликам */
 }
