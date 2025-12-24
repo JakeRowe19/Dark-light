@@ -218,7 +218,7 @@ function orderCardTemplate() {
   return `
     <div class="beer-card state-order">
       <div class="card-top">
-        <div class="title">Все цены указаны за литр</div>
+        <div class="title">Цены указаны за литр</div>
       </div>
 
       <div class="card-bottom">
