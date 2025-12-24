@@ -218,7 +218,7 @@ function orderCardTemplate() {
   return `
     <div class="beer-card state-order">
       <div class="card-top">
-        <div class="title">Пиво под заказ</div>
+        <div class="title">Все цены указаны за литр</div>
       </div>
 
       <div class="card-bottom">
@@ -226,7 +226,7 @@ function orderCardTemplate() {
 
         <div class="info-line" style="justify-content:center; text-align:center;">
           <span class="order-text">
-            Можете заказать у продавца
+            А еще вы можете заглянуть в холодильники -->
           </span>
         </div>
       </div>
