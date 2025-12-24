@@ -144,7 +144,7 @@ function formatPrice(item) {
   const coef = 1 - discountPercent / 100;
   const final = Math.round(base * coef);
 
-  return final + "₽/л";
+  return final + "₽";
 }
 
 
