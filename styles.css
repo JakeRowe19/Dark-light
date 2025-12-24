@@ -190,7 +190,7 @@ html, body {
 
 /* опускаем верхний текст у order-карточки */
 .state-order .card-top {
-  padding-top: 2.5vh;   /* опускаем вниз */
+  padding-top: 1vh;   /* опускаем вниз */
   padding-bottom: 0.6vh;
 }
 
@@ -199,6 +199,7 @@ html, body {
 .beer-card {
   position: relative; /* нужно для абсолютного бейджа */
 }
+
 
 /* картинка-акцент в правом верхнем углу */
 .accent-badge {
