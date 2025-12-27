@@ -3,6 +3,7 @@
 const CSV_URL_BASE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcUeH0R2aQgSWh0hhjkHEF2j3vSmWaFn-vpEvdl3wmgZavajJXslZR7zB8a8Wk3r2cKkXolnIXrq14/pub?output=csv";
 
 const ITEMS_PER_SCREEN = 15;
+const ORDER_CARD_POSITION = 40;
 
 // чтение CSV → массив объектов
 async function fetchCsv() {
@@ -247,7 +248,12 @@ async function renderScreen(screenNumber) {
   allItems.sort((a, b) => Number(a["id"]) - Number(b["id"]));
 
   // +1 элемент: спец-карточка в конце
-  const itemsWithOrder = [...allItems, { __custom: "order" }];
+  const itemsWithOrder = [...allItems];
+  const orderIndex = Math.max(0, (ORDER_CARD_POSITION || 1) - 1);
+
+  // вставляем даже если позиция "после конца" — тогда просто станет последней
+  const safeIndex = Math.min(orderIndex, itemsWithOrder.length);
+  itemsWithOrder.splice(safeIndex, 0, { __custom: "order" });
 
   const start = (screenNumber - 1) * ITEMS_PER_SCREEN;
   const end   = start + ITEMS_PER_SCREEN;
