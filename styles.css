@@ -192,7 +192,7 @@ html, body {
 
 /* опускаем верхний текст у order-карточки */
 .state-order .card-top {
-  padding-top: 0.6vh;   /* опускаем вниз */
+  padding-top: 1.6vh;   /* опускаем вниз */
   padding-bottom: 0.6vh;
 }
 
