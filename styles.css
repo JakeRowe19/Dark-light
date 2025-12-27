@@ -70,8 +70,8 @@ html, body {
 
   padding-top: 0.5vh;
   padding-bottom: 1vh;
-  margin-left: -1vh;
-  margin-right: -1vh;
+  margin-left: -1.5vh;
+  margin-right: -1.5vh;
 
   min-height: 7vh;     /* не меньше */
   max-height: 12vh;    /* не больше */
