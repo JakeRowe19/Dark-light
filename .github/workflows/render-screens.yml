@@ -1,0 +1,58 @@
+name: Render menu screens to PNG
+
+on:
+  on:
+  schedule:
+    - cron: "30 8 * * *"   # 11:30 MSK
+    - cron: "0 11 * * *"   # 14:00 MSK
+    - cron: "0 15 * * *"   # 18:00 MSK
+    - cron: "0 19 * * *"   # 22:00 MSK
+  workflow_dispatch:        # ручной запуск кнопкой
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo (for scripts)
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm i playwright
+          npx playwright install --with-deps chromium
+
+      - name: Render screens
+        env:
+          BASE_URL: https://YOUR_USER.github.io/YOUR_REPO
+          VIEWPORT_W: "1920"
+          VIEWPORT_H: "1080"
+        run: node scripts/render-screens.mjs
+
+      - name: Push PNGs to backups branch (force update)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # создаём рабочую ветку backups поверх пустой/существующей
+          git checkout --orphan backups
+
+          mkdir -p backups
+          cp -f out/*.png backups/
+
+          # небольшой маркер времени
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > backups/last-render-utc.txt
+
+          git add backups
+          git commit -m "Update menu PNGs"
+
+          # force-push, чтобы ветка всегда была "только актуальное"
+          git push -f origin backups
