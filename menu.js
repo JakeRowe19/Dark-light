@@ -1,6 +1,6 @@
 // ----- НАСТРОЙКИ -----
 
-const CSV_URL_BASE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcUeH0R2aQgSWh0hhjkHEF2j3vSmWaFn-vpEvdl3wmgZavajJXslZR7zB8a8Wk3r2cKkXolnIXrq14/pub?output=csv";
+const CSV_URL_BASE = "/data/menu.csv";
 
 const ITEMS_PER_SCREEN = 15;
 const ORDER_CARD_POSITION = 40;
@@ -8,7 +8,7 @@ const ORDER_CARD_POSITION = 40;
 // чтение CSV → массив объектов
 async function fetchCsv() {
   // добавляем "мусорный" параметр, чтобы URL всегда был уникален
-  const url = CSV_URL_BASE + `&t=${Date.now()}`;
+  const url = CSV_URL_BASE + `?t=${Date.now()}`;
 
   const res = await fetch(url, {
     cache: "no-store",        // просим браузер не использовать кэш
