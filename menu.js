@@ -87,13 +87,6 @@ function sanitize(value) {
 
 // ----- МАППИНГ ПОЛЕЙ И СОСТОЯНИЙ -----
 
-function getState(item) {
-  const v = (item["instock"] || "").toLowerCase();
-  if (v.includes("sale")) return "sale";
-  if (v.includes("no"))   return "pending";
-  if (v.includes("yes"))  return "instock";
-  return "instock";
-}
 
 // Заголовок: в первую очередь столбец S "Наименование"
 // (он уже содержит "1.Ратминское" и т.п.)
@@ -115,39 +108,56 @@ function formatSpecs(item) {
   return [abv, og].filter(Boolean).join(" ");
 }
 
+function extractDiscountPercent(availabilityRaw) {
+  const v = String(availabilityRaw || "")
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim();
 
-// Цена
+  // ищем любое число перед %
+  const m = v.match(/(\d+)\s*%/);
+  if (!m) return 0;
+
+  const p = Number(m[1]);
+  if (!isFinite(p)) return 0;
+
+  // защита от мусора
+  return Math.max(0, Math.min(100, p));
+}
+
+function getState(item) {
+  const raw = sanitize(item["Наличие"]);
+  const v = String(raw || "").toLowerCase().trim();
+
+  // если есть % — это скидка
+  if (extractDiscountPercent(v) > 0) return "sale";
+
+  if (v === "нет") return "pending";
+  if (v === "да")  return "instock";
+
+  // по умолчанию считаем "в наличии"
+  return "instock";
+}
+
 function formatPrice(item) {
-  // 1. Базовая цена из столбца "цена"
+  // 1) Базовая цена
   const rawBase = item["цена"] || item["Цена"] || "";
+  const cleaned = String(rawBase)
+    .replace(",", ".")
+    .replace(/[^0-9.]/g, "");
 
-  // оставляем только цифры и точку
-  const base = (() => {
-    const cleaned = String(rawBase)
-      .replace(",", ".")
-      .replace(/[^0-9.]/g, "");
-    const n = parseFloat(cleaned);
-    return isNaN(n) ? NaN : n;
-  })();
+  const base = parseFloat(cleaned);
+  if (!isFinite(base)) return "";
 
-  if (isNaN(base)) return "";
+  // 2) Скидка из "Наличие"
+  const discountPercent = extractDiscountPercent(item["Наличие"]);
 
-  // 2. Читаем столбец "Наличие" и вытаскиваем из него скидку в процентах
-  const availability = (item["Наличие"] || "").toLowerCase();
-
-  let discountPercent = 0;
-  const match = availability.match(/(\d+)\s*%/); // ищем число перед %
-  if (match) {
-    discountPercent = Number(match[1]); // "скидка 15%" -> 15
-  }
-
-  // 3. Считаем цену со скидкой (если скидки нет, discountPercent = 0)
+  // 3) Итоговая цена
   const coef = 1 - discountPercent / 100;
   const final = Math.round(base * coef);
 
   return final + "₽";
 }
-
 
 
 // Страна
@@ -165,13 +175,40 @@ function getName(item) {
 
 
 // Бейдж
+const TYPE_TO_BEERTYPE = {
+  "темное":        "beertype=dark",
+  "темное н/ф":    "beertype=darkNF",
+  "светлое":       "beertype=light",
+  "светлое н/ф":   "beertype=lightNF",
+  "пшеничное":     "beertype=wheat",
+  "сидр":          "beertype=cider",
+  "Медовуха":      "beertype=mead",
+  "Другое":        "beertype=other@,
+  "б/а":           "beertype=n/a"
+};
+
+
 function getBadge(item) {
-  const bt = sanitize(item["beertype"]);
-  if (!bt) return "";
-  const file = BEERTYPE_BADGE[bt];
+  // читаем из столбца "Тип"
+  const rawType = sanitize(item["Тип"]);
+  if (!rawType) return "";
+
+  // нормализация
+  const key = rawType
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const beertype = TYPE_TO_BEERTYPE[key];
+  if (!beertype) return "";
+
+  const file = BEERTYPE_BADGE[beertype];
   if (!file) return "";
-  return `<img class="badge" src="img/${file}" alt="${bt}">`;
+
+  return `<img class="badge" src="img/${file}" alt="${key}">`;
 }
+
+
 
 // ----- ШАБЛОН КАРТОЧКИ -----
 
