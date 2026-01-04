@@ -182,8 +182,8 @@ const TYPE_TO_BEERTYPE = {
   "светлое н/ф":   "beertype=lightNF",
   "пшеничное":     "beertype=wheat",
   "сидр":          "beertype=cider",
-  "Медовуха":      "beertype=mead",
-  "Другое":        "beertype=other",
+  "медовуха":      "beertype=mead",
+  "другое":        "beertype=other",
   "б/а":           "beertype=n/a"
 };
 
