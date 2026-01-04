@@ -183,7 +183,7 @@ const TYPE_TO_BEERTYPE = {
   "пшеничное":     "beertype=wheat",
   "сидр":          "beertype=cider",
   "Медовуха":      "beertype=mead",
-  "Другое":        "beertype=other@,
+  "Другое":        "beertype=other",
   "б/а":           "beertype=n/a"
 };
 
