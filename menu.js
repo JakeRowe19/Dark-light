@@ -228,7 +228,7 @@ function orderCardTemplate() {
 
         <div class="info-line" style="justify-content:center; text-align:center;">
           <span class="order-text">
-            А еще вы можете заглянуть в холодильники -->
+           Бутылка в стоимость не входит
           </span>
         </div>
       </div>
