@@ -236,7 +236,7 @@ function cardTemplate(item) {
         <div class="info-line">
           ${
             isNonAlc
-              ? `<span class="badge-wrap">${getNonAlcoholBadge()}</span>`
+              ? `<span class="badge-wrap badge-wrap-nonalc">${getNonAlcoholBadge()}</span>`
               : `<span class="abv">${specs}</span>`
           }
           ${priceHtml}

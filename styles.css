@@ -70,6 +70,7 @@ html, body {
 
   padding-top: 0.5vh;
   padding-bottom: 1vh;
+  padding-right: 5.4vh;
   margin-left: -1.5vh;
   margin-right: -1.5vh;
 
@@ -83,6 +84,7 @@ html, body {
   font-size: 3.0vh;
   font-weight: 700;
   margin-bottom: 0vh;
+  flex-shrink: 0;
 }
 
 /* Название */
@@ -129,32 +131,57 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1vh;
+  min-width: 0;
   font-size: 2.1vh;
 }
 
 /* страна */
 .country {
   font-size: 2.2vh;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* крепость + плотность */
 .abv {
   font-size: 2.1vh;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* цена */
 .price {
   font-size: 5.1vh;
   font-weight: 900;
+  flex: 0 0 auto;
 }
 
 /* бейдж */
 .badge-wrap {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  flex: 0 0 auto;
 }
 .badge {
   height: 4.2vh;
+  width: auto;
+}
+
+.badge-wrap-nonalc {
+  min-width: 7vh;
+  justify-content: flex-start;
+}
+
+.badge-wrap-nonalc .badge {
+  height: 3.5vh;
 }
 
 /* ===== Состояния ===== */
@@ -170,6 +197,8 @@ html, body {
   font-weight: 600;
   font-style: italic;
   color: #c00000;       /* красный */
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .state-order .card-bottom {
