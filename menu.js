@@ -55,6 +55,7 @@ const BEERTYPE_BADGE = {
   "beertype=wheat":   "beertype=wheat.png",
   "beertype=wheatNF":   "beertype=wheatNF.png",
   "beertype=cider":   "beertype=cider.png",
+  "beertype=lemonade":  "beertype=lemonade.png",
   "beertype=mead":   "beertype=mead.png"
 };
 
@@ -132,8 +133,8 @@ function formatSpecs(item) {
 }
 
 function isNonAlcoholic(item) {
-  const abvRaw = parseNumericValue(item["крепость"]);
-  return Number.isFinite(abvRaw) && abvRaw === 0;
+  const abvValue = sanitize(item["крепость"]).replace(",", ".").trim();
+  return abvValue === "0";
 }
 
 function getNonAlcoholBadge() {
