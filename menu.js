@@ -85,6 +85,17 @@ function sanitize(value) {
   return stripQuotes(value);
 }
 
+function parseNumericValue(value) {
+  const normalized = String(value ?? "")
+    .replace(",", ".")
+    .replace(/[^0-9.\-]/g, "");
+
+  if (!normalized) return NaN;
+
+  const num = parseFloat(normalized);
+  return Number.isNaN(num) ? NaN : num;
+}
+
 
 // ----- МАППИНГ ПОЛЕЙ И СОСТОЯНИЙ -----
 
@@ -107,13 +118,26 @@ function formatTitle(item) {
 // Строка "крепость + плотность":
 // берём как есть из столбца R "Плотность°P"
 function formatSpecs(item) {
-  const abvRaw = Number(item["крепость"]);
-  const ogRaw  = Number(item["плотность"]);
+  const abvRaw = parseNumericValue(item["крепость"]);
+  const ogRaw  = parseNumericValue(item["плотность"]);
   
-  const abv = abvRaw ? (abvRaw / 10).toFixed(1) + "%" : "";
-  const og  = ogRaw ? ogRaw + "oG" : "";
+  const abv = Number.isFinite(abvRaw) && abvRaw > 0
+    ? (abvRaw / 10).toFixed(1) + "%"
+    : "";
+  const og  = Number.isFinite(ogRaw) && ogRaw > 0
+    ? ogRaw + "oG"
+    : "";
 
   return [abv, og].filter(Boolean).join(" ");
+}
+
+function isNonAlcoholic(item) {
+  const abvRaw = parseNumericValue(item["крепость"]);
+  return Number.isFinite(abvRaw) && abvRaw === 0;
+}
+
+function getNonAlcoholBadge() {
+  return `<img class="badge" src="img/nonalc.png" alt="безалкогольное">`;
 }
 
 
@@ -182,6 +206,7 @@ function cardTemplate(item) {
   const id      = getId(item);
   const name    = getName(item);
   const specs   = formatSpecs(item);
+  const isNonAlc = isNonAlcoholic(item);
   const country = getCountry(item);
   const badge   = getBadge(item);
   const price   = formatPrice(item);
@@ -208,7 +233,11 @@ function cardTemplate(item) {
         </div>
 
         <div class="info-line">
-          <span class="abv">${specs}</span>
+          ${
+            isNonAlc
+              ? `<span class="badge-wrap">${getNonAlcoholBadge()}</span>`
+              : `<span class="abv">${specs}</span>`
+          }
           ${priceHtml}
         </div>
       </div>
