@@ -39,7 +39,17 @@ function getAccent(item) {
   const file = ACCENT_BADGE[raw];
   if (!file) return "";
 
-  return `<img class="accent-badge" src="img/${file}" alt="${raw}">`;
+  const extraClass =
+    raw === "новинка"
+      ? "accent-badge-new"
+      : "";
+
+  return `
+    <img
+      class="accent-badge ${extraClass}"
+      src="img/${file}"
+      alt="${raw}">
+  `;
 }
 
 

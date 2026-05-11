@@ -242,3 +242,24 @@ html, body {
   z-index: 5;
   pointer-events: none; /* чтобы не мешала кликам */
 }
+
+
+/* только новинка анимируется */
+.accent-badge-new {
+  transform-origin: center;
+  animation: newBadgePulse 3.4s ease-in-out infinite;
+}
+
+@keyframes newBadgePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.96;
+    filter: drop-shadow(0 0 0vh rgba(255, 220, 120, 0));
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+    filter: drop-shadow(0 0 0.7vh rgba(255, 220, 120, 0.95));
+  }
+}
