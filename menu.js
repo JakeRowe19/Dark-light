@@ -55,6 +55,8 @@ const BEERTYPE_BADGE = {
   "beertype=wheat":   "beertype=wheat.png",
   "beertype=wheatNF":   "beertype=wheatNF.png",
   "beertype=cider":   "beertype=cider.png",
+  "beertype=kvas":   "beertype=kvas.png",
+  "beertype=coctail":   "beertype=coctail.png",
   "beertype=lemonade":  "beertype=lemonade.png",
   "beertype=mead":   "beertype=mead.png"
 };
