@@ -137,7 +137,7 @@ html, body {
 
 /* страна */
 .country {
-  font-size: 2.2vh;
+  font-size: 2.0vh;
   min-width: 0;
   flex: 1 1 auto;
   overflow: hidden;
