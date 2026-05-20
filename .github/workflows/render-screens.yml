@@ -1,0 +1,53 @@
+name: Render menu screens to PNG (4K)
+
+on:
+  schedule:
+    # Московское время (UTC+3)
+    - cron: "30 8 * * *"    # 11:30 MSK
+    - cron: "0 11 * * *"    # 14:00 MSK
+    - cron: "0 15 * * *"    # 18:00 MSK
+    - cron: "0 19 * * *"    # 22:00 MSK
+  workflow_dispatch:        # ручной запуск
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright (Chromium)
+        run: |
+          npm init -y
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Render screens
+        run: node scripts/render-screens.mjs
+
+      - name: Push PNGs to backups branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout --orphan backups
+
+          mkdir -p backups
+          cp -f out/*.png backups/
+
+          # метка времени рендера (UTC)
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > backups/last-render-utc.txt
+
+          git add backups
+          git commit -m "Update menu PNGs"
+
+          git push -f origin backups
